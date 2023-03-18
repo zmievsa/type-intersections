@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "any-python-template"
+name = "type-intersections"
 version = "0.1.0"
 description = ""
 authors = ["Stanislav Zmiev <szmiev2000@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
 typing-extensions = "*"
