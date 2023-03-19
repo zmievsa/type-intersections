@@ -38,7 +38,24 @@ The current implementation assumes that intersections are unordered which makes 
 1. I have not been able to come up with an algorithm that can intuitively do structural and ordered intersection issubclass checks at the same time (see the XFAIL testcase). Not sure if that is even possible but I haven't tried for long.
 2. TypeScript [doesn't even try](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgIImAWzgG2QbwChlkBnYALwgC5kQBXTAI2gG5jk4BzGuxlqOwC+hQqEixEKAMJwwyCAA9IIACak0GbHiIkSAdwAWwUgGtoAGQgguYQ7QbM2hEWPDR4SZNPosCHEnIqWlIwKFAudj1kBAB7HFioB35nV3EPKWQAIVwdAJj4xJCwiOFRGHoQBDBgWJBkQwgcBIAKGFjY2nQsXGQAMm85fu9fFAGc5oBKf2iAelnkAEYAOmQAMQ7kE0569KhSCGra+tiYTmbkOygIFDAATwAHCFJVgElliFWAFUbLx+fONc6LF5KoIKp6A8cMAEHJwcgmHADqpkHUtiBGuEwHAqhB8u1YlE9PNkAAmVYAZUoKG2ACIQBAAG7QWn4jrLIIQIkkEkAZlW0kKUC2GnpTJZbNiyziCUELkIQA) to handle order in intersections
 
-The issue arises when we try to decide what to use in issubclass checks: the class itself or its `mro()`. Let's say that a class `C` inherits method `foo()` that is defined in both its parents: `A` and `B`. Let's also say that `C` defines the method `__len__` that its parents do not have. If we have an intersection `A & B & Sized`, what algorithm would we use to check that `C` uses the correct `foo()` and that it is Sized?
+The issue arises when we try to decide what to use in issubclass checks: the class itself or its `mro()`.
+
+Let's say that a class `C` inherits method `foo()` that is defined in both its parents: `A` and `B`. Let's also say that `C` defines the method `__len__` that its parents do not have. If we have an intersection `A & B & Sized`, what algorithm would we use to check that `C` uses the correct `foo()` and that it is Sized?
+
+```python
+class A:
+    def foo(self, a):
+        print(a)
+
+class B:
+    def foo(self, a, b):
+        print(a, b)
+
+class C(A, B):
+    # Makes C Sized
+    def __len__(self):
+        return 83
+```
 
 1. If we try to just check `issubclass(C, A) and issubclass(C, B) and issubclass(C, Sized)`, then we are omitting order information and cannot definitively tell that `C` will inherit `foo()` from `A`.
 
