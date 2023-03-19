@@ -22,7 +22,7 @@ def Intersection(self, parameters):
 # You might notice that I do not merge parents and children (i.e. date & datetime != datetime).
 # I do so because it makes the initial implementation simpler and because TypeScript doesn't merge
 # them too.
-def _remove_dups_and_flatten_for_intersections(parameters: tuple[type]):
+def _remove_dups_and_flatten_for_intersections(parameters):
     parameters = _flatten(parameters)
     # Remove duplicates while preserving order
     return tuple(dict.fromkeys(parameters))
