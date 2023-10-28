@@ -5,8 +5,8 @@ A naive prototype of type intersections implementation.
 ---
 
 <p align="center">
-<a href="https://github.com/ovsyanka83/type-intersections/actions?query=workflow%3ATests+event%3Apush+branch%3Amain" target="_blank">
-    <img src="https://github.com/Ovsyanka83/type-intersections/actions/workflows/test.yaml/badge.svg?branch=main&event=push" alt="Test">
+<a href="https://github.com/zmievsa/type-intersections/actions?query=workflow%3ATests+event%3Apush+branch%3Amain" target="_blank">
+    <img src="https://github.com/zmievsa/type-intersections/actions/workflows/test.yaml/badge.svg?branch=main&event=push" alt="Test">
 </a>
 <a href="https://codecov.io/gh/ovsyanka83/type-intersections" target="_blank">
     <img src="https://img.shields.io/codecov/c/github/ovsyanka83/type-intersections?color=%2334D058" alt="Coverage">

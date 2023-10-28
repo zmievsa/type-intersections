@@ -2,10 +2,10 @@
 name = "type-intersections"
 version = "0.1.1"
 description = ""
-authors = ["Stanislav Zmiev <szmiev2000@gmail.com>"]
+authors = ["Stanislav Zmiev <zmievsa@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ovsyanka83/type-intersections"
+repository = "https://github.com/zmievsa/type-intersections"
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -48,3 +48,7 @@ exclude_lines = [
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.mypy]
+plugins = ["/home/ovsyanka/code/type-intersections/my_plugin.py"]
